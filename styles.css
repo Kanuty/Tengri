@@ -1,0 +1,75 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#simpleModal {
+  overflow-y: hidden;
+}
+
+.button {
+  background-color: #ff7f50;
+  border: 0;
+  border-radius: 2px;
+  color: #eee;
+  cursor: pointer;
+  min-width: 100px;
+  padding: 1em 2em;
+  transition: 0.2s;
+}
+
+.button:hover {
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  background-color: #ee6f30;
+  color: #fff;
+}
+
+.modal-content {
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.7);
+  background-color: #f4f4f4;
+  margin: 20% auto;
+  padding: 20px;
+  width: 70%;
+}
+
+.modal-content h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.closeBtn {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  padding: 15px;
+  text-align: left;
+}
+
+tr:hover {
+  background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #aaa;
+}
+
+/* add responsive table style */
