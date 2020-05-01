@@ -7,32 +7,22 @@
   <link rel='stylesheet' href='styles.css' type='text/css'>
 </head>
 <body>
-  <button id='modalClose' class='button'>GDPR consent</button>
-  <button id='cookieRemover' class='button'>Remove cookies</button>
-  <!-- Modal -->
-  <div id='simpleModal'>
-    <div class="modal-content">
-      <span id='gdprClose' class='closeBtn'>&times;</span>
-      <div  class='list-container'>
-        <table id='dataTable'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Company</th> 
-                    <th>City</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-      </div>
-      <div class='buttons-container'>
-        <button id='gdprAccept' class='button'>Accept</button>
-        <button id='gdprReject' class="button">Reject</button>
-      </div>
-    </div>
+  <div>
+    <table id='dataTable'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company</th> 
+                <th>City</th>
+                <th>Total income</th>
+                <th>Average income</th>
+                <th>Month Income</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
   </div>
-
   <script src='main.js'></script>
 </body>
 </html>

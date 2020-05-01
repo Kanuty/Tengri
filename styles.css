@@ -4,10 +4,6 @@ body {
   line-height: 1.6;
 }
 
-#simpleModal {
-  overflow-y: hidden;
-}
-
 .button {
   background-color: #ff7f50;
   border: 0;
@@ -23,20 +19,6 @@ body {
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
   background-color: #ee6f30;
   color: #fff;
-}
-
-.modal-content {
-  border-radius: 5px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.7);
-  background-color: #f4f4f4;
-  margin: 20% auto;
-  padding: 20px;
-  width: 70%;
-}
-
-.modal-content h3 {
-  display: flex;
-  justify-content: center;
 }
 
 .closeBtn {
