@@ -13,10 +13,9 @@ request.onload = function () {
   if (request.readyState === 4) {
     if (request.status === 200) {
       const companies = JSON.parse(request.responseText);
-
-      for (let i = 0; i < companies.length; i += 1) {
-        // createNewTableTBody(dataTable, companies[i].id, companies[i].name);
-        createNewTableCells(i, companies[i]);
+      for (let element of companies) {
+        createNewTableCells(element);
+        incomesCall(element.id);
       }
     } else {
       errorInfo();
@@ -28,8 +27,43 @@ request.onerror = function () {
 };
 request.send(null);
 
-function createNewTableCells(iteration, data) {
-  let row = dataTableTB.insertRow(iteration);
+//
+function incomesCall(id) {
+  request.open(
+    "GET",
+    `https://recruitment.hal.skygate.io/incomes/${id}`,
+    false
+  );
+  request.onload = function () {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        const companyIncomes = JSON.parse(request.responseText);
+        console.log(companyIncomes);
+        callculateIncomes(companyIncomes.incomes);
+      } else {
+        errorInfo();
+      }
+    }
+  };
+  request.onerror = function () {
+    console.error(request.statusText);
+  };
+  request.send(null);
+}
+
+function callculateIncomes(data) {
+  let totalIncome = 0;
+  let averageIncome = 0;
+  for (let element of data) {
+    totalIncome += parseInt(element.value);
+  }
+  averageIncome = totalIncome / data.length;
+  dataTableTB.rows[0].cells[3].innerHTML = totalIncome;
+  dataTableTB.rows[0].cells[4].innerHTML = averageIncome;
+}
+
+function createNewTableCells(data) {
+  let row = dataTableTB.insertRow(0);
   const noValue = "There is no data";
 
   //check for data
@@ -46,6 +80,9 @@ function createNewTableCells(iteration, data) {
   row.insertCell(0).innerHTML = data.id;
   row.insertCell(1).innerHTML = data.name;
   row.insertCell(2).innerHTML = data.city;
+  row.insertCell(3).innerHTML = "data yet to be loaded";
+  row.insertCell(4).innerHTML = "data yet to be loaded";
+  row.insertCell(5).innerHTML = "data yet to be loaded";
 }
 
 function errorInfo(

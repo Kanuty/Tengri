@@ -4,54 +4,35 @@ body {
   line-height: 1.6;
 }
 
-.button {
-  background-color: #ff7f50;
-  border: 0;
-  border-radius: 2px;
-  color: #eee;
-  cursor: pointer;
-  min-width: 100px;
-  padding: 1em 2em;
-  transition: 0.2s;
-}
-
-.button:hover {
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
-  background-color: #ee6f30;
-  color: #fff;
-}
-
-.closeBtn {
-  color: #ccc;
-  float: right;
-  font-size: 30px;
-}
-
-.closeBtn:hover,
-.closeBtn:focus {
-  color: #000;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 table {
   border-collapse: collapse;
+}
+table th {
+  background-color: #529cdb;
+  border: 5px solid #eee;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 3px solid #eee;
   padding: 15px;
-  text-align: left;
+  text-align: center;
 }
 
-tr:hover {
-  background-color: #ccc;
+table tr {
+  font-size: 14px;
 }
 
 tr:nth-child(even) {
-  background-color: #aaa;
+  background-color: #d0e4f5;
+}
+tr:nth-child(odd) {
+  background-color: #e5f0f9;
 }
 
 /* add responsive table style */
