@@ -51,15 +51,29 @@ function incomesCall(id) {
   request.send(null);
 }
 
-function callculateIncomes(data) {
+function callculateIncomes(data, lastMonth = "12") {
+  if (data.length === 0) {
+    return console.log("There is no company income data");
+  }
+  if (lastMonth.length !== 2 || typeof lastMonth != "string") {
+    console.log(
+      "lastMonth parameter in callculateIncomes has to be a string with length 2. January == 01"
+    );
+  }
   let totalIncome = 0;
   let averageIncome = 0;
+  let lastMonthIncome = 0;
   for (let element of data) {
     totalIncome += parseInt(element.value);
+    // hack
+    if (element.date[5] == lastMonth[0] && element.date[6] == lastMonth[1]) {
+      lastMonthIncome = element.value;
+    }
   }
   averageIncome = totalIncome / data.length;
   dataTableTB.rows[0].cells[3].innerHTML = totalIncome;
   dataTableTB.rows[0].cells[4].innerHTML = averageIncome;
+  dataTableTB.rows[0].cells[5].innerHTML = lastMonthIncome;
 }
 
 function createNewTableCells(data) {
