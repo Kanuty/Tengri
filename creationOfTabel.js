@@ -38,8 +38,8 @@ function incomesCall(id) {
     if (request.readyState === 4) {
       if (request.status === 200) {
         const companyIncomes = JSON.parse(request.responseText);
-        console.log(companyIncomes);
         callculateIncomes(companyIncomes.incomes);
+        hideModal();
       } else {
         errorInfo();
       }
@@ -67,7 +67,7 @@ function callculateIncomes(data, lastMonth = "12") {
     totalIncome += parseInt(element.value);
     // hack
     if (element.date[5] == lastMonth[0] && element.date[6] == lastMonth[1]) {
-      lastMonthIncome = element.value;
+      lastMonthIncome += parseInt(element.value);
     }
   }
   averageIncome = totalIncome / data.length;
@@ -91,7 +91,7 @@ function createNewTableCells(data) {
     data.city = noValue;
   }
   // insert cells
-  row.insertCell(0).innerHTML = data.id;
+  row.insertCell(0).innerHTML = parseInt(data.id);
   row.insertCell(1).innerHTML = data.name;
   row.insertCell(2).innerHTML = data.city;
   row.insertCell(3).innerHTML = "data yet to be loaded";

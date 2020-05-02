@@ -4,6 +4,50 @@ body {
   line-height: 1.6;
 }
 
+.loader {
+  border: 5px solid #333;
+  border-top: 5px solid #529cdb;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  animation: spin 0.5s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.modal p {
+  text-align: center;
+}
+
+.modal-content {
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.7);
+  background-color: #f4f4f4;
+  margin: 20% auto;
+  padding: 20px;
+  width: 70%;
+}
+
 table {
   border-collapse: collapse;
 }

@@ -10,39 +10,69 @@ const headerTI = dataTableHeader.getElementsByTagName("th")[3];
 const headerAI = dataTableHeader.getElementsByTagName("th")[4];
 // last mounth income
 const headerLMI = dataTableHeader.getElementsByTagName("th")[5];
-const qwerty = document.getElementById("qwerty");
 
-qwerty.addEventListener("click", sortTable(0));
-headerId.addEventListener("click", sortTable(0));
-headerCompany.addEventListener("click", sortTable(1));
-headerCity.addEventListener("click", sortTable(2));
-headerTI.addEventListener("click", sortTable(3));
-headerAI.addEventListener("click", sortTable(4));
-headerLMI.addEventListener("click", sortTable(5));
+headerId.addEventListener("click", function () {
+  sortTable(0);
+});
+headerCompany.addEventListener("click", function () {
+  sortTable(1, "string");
+});
+headerCity.addEventListener("click", function () {
+  sortTable(2, "string");
+});
+headerTI.addEventListener("click", function () {
+  sortTable(3);
+});
+headerAI.addEventListener("click", function () {
+  sortTable(4);
+});
+headerLMI.addEventListener("click", function () {
+  sortTable(5);
+});
 
-function sortTable(n) {
-  const rows = dataTable.rows;
+// This sorting mechanism "work" but is hard to say that it make its job done. Elimination of global variables is necessity.
+// Moreover, it is higly suggested to change a bubblig sort to merge or quick sort in a future (time dependent).
+// Lastly, sorting mechanism should became modular and reusable in any table.
+
+// n = column of the table
+// type = "string" || "number" - depend if sorting has to be performed on strings or numbers
+function sortTable(n, type = "number") {
+  const rows = dataTableTB.rows;
   let switching = true;
   let shouldSwitch = false;
-  // dir == asc || desc
+  // dir === "asc" || "desc"
   let dir = "asc";
-  let switchcount = 0;
-
-  while (switching) {
+  var i = 0;
+  var switchcount = 0;
+  while (switching === true) {
     switching = false;
-    for (let i = 1; i < rows.length - 1; i++) {
-      console.log(rows[i].getElementsByTagName("TD")[n]);
+    for (; i < rows.length - 1; i++) {
       let x = rows[i].getElementsByTagName("TD")[n];
       let y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
+      if (type == "string") {
+        if (dir === "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
         }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
+      }
+      if (type == "number") {
+        if (dir === "asc") {
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            shouldSwitch = true;
+            break;
+          }
         }
       }
     }
