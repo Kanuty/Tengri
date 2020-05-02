@@ -51,22 +51,19 @@ function incomesCall(id) {
   request.send(null);
 }
 
-function callculateIncomes(data, lastMonth = "12") {
+// 12 = December
+// 1 = January
+function callculateIncomes(data, lastMonth = 12) {
   if (data.length === 0) {
     return console.log("There is no company income data");
-  }
-  if (lastMonth.length !== 2 || typeof lastMonth != "string") {
-    console.log(
-      "lastMonth parameter in callculateIncomes has to be a string with length 2. January == 01"
-    );
   }
   let totalIncome = 0;
   let averageIncome = 0;
   let lastMonthIncome = 0;
   for (let element of data) {
     totalIncome += parseInt(element.value);
-    // hack
-    if (element.date[5] == lastMonth[0] && element.date[6] == lastMonth[1]) {
+
+    if (parseInt(element.date.split("T")[0].split("-")[1]) === lastMonth) {
       lastMonthIncome += parseInt(element.value);
     }
   }
@@ -90,7 +87,7 @@ function createNewTableCells(data) {
   if (data.city == null) {
     data.city = noValue;
   }
-  // insert cells
+
   row.insertCell(0).innerHTML = parseInt(data.id);
   row.insertCell(1).innerHTML = data.name;
   row.insertCell(2).innerHTML = data.city;

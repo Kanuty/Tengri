@@ -13,7 +13,7 @@ function openModal() {
 function noScroll() {
   window.scrollTo(0, 0);
 }
-
+// do something on load
 (function () {
   {
     openModal();
