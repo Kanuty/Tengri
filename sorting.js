@@ -1,6 +1,7 @@
 const dataTableHeader = dataTable
   .getElementsByTagName("thead")[0]
   .getElementsByTagName("tr")[0];
+const rows = dataTableTB.rows;
 const headerId = dataTableHeader.getElementsByTagName("th")[0];
 const headerCompany = dataTableHeader.getElementsByTagName("th")[1];
 const headerCity = dataTableHeader.getElementsByTagName("th")[2];
@@ -11,80 +12,76 @@ const headerAI = dataTableHeader.getElementsByTagName("th")[4];
 // last mounth income
 const headerLMI = dataTableHeader.getElementsByTagName("th")[5];
 
+let sorterToggle = [false, false, false, false, false, false];
+
 headerId.addEventListener("click", function () {
-  sortTable(0);
+  sortTable(0, sorterToggle[0]);
 });
 headerCompany.addEventListener("click", function () {
-  sortTable(1, "string");
+  sortTable(1, sorterToggle[1], "string");
 });
 headerCity.addEventListener("click", function () {
-  sortTable(2, "string");
+  sortTable(2, sorterToggle[2], "string");
 });
 headerTI.addEventListener("click", function () {
-  sortTable(3);
+  sortTable(3, sorterToggle[3]);
 });
 headerAI.addEventListener("click", function () {
-  sortTable(4);
+  sortTable(4, sorterToggle[4]);
 });
 headerLMI.addEventListener("click", function () {
-  sortTable(5);
+  sortTable(5, sorterToggle[5]);
 });
 
-// This sorting mechanism "work" but is hard to say that it make its job done. Elimination of global variables is necessity.
-// Moreover, it is higly suggested to change a bubblig sort to merge or quick sort in a future (time dependent).
-// Lastly, sorting mechanism should became modular and reusable in any table.
+// This sorting mechanism "work" but is hard to say that it make its job done.
+// Moreover, it is higly suggested to change a bubblig sort to more efficent algorithm like merge, radix or quick sort in the future.
 
 // n = column of the table
 // type = "string" || "number" - depend if sorting has to be performed on strings or numbers
-function sortTable(n, type = "number") {
-  const rows = dataTableTB.rows;
-  let switching = true;
-  let shouldSwitch = false;
-  // dir === "asc" || "desc"
-  let dir = "asc";
-  var i = 0;
-  var switchcount = 0;
-  while (switching === true) {
-    switching = false;
-    for (; i < rows.length - 1; i++) {
+
+function sortTable(n, asc = true, type = "number") {
+  let switchingCounter = 0;
+  while (switchingCounter <= rows.length) {
+    let noSwaps = true;
+    for (let i = 0; i < rows.length - 1 - switchingCounter; i += 1) {
       let x = rows[i].getElementsByTagName("TD")[n];
       let y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (type == "string") {
-        if (dir === "asc") {
+
+      if (type === "string") {
+        if (asc) {
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            noSwaps = false;
           }
-        } else if (dir == "desc") {
+        } else if (!asc) {
           if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            noSwaps = false;
           }
         }
       }
-      if (type == "number") {
-        if (dir === "asc") {
+      if (type === "number") {
+        if (asc) {
           if (Number(x.innerHTML) > Number(y.innerHTML)) {
-            shouldSwitch = true;
-            break;
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            noSwaps = false;
           }
-        } else if (dir == "desc") {
-          if (Number(x.innerHTML) > Number(y.innerHTML)) {
-            shouldSwitch = true;
-            break;
+        } else if (!asc) {
+          if (Number(x.innerHTML) < Number(y.innerHTML)) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            noSwaps = false;
           }
         }
       }
     }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount++;
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
+    switchingCounter += 1;
+    if (noSwaps) {
+      sorterToggle[n] = !asc;
+      break;
     }
   }
 }
+
+// if (Number(x.innerHTML) < Number(y.innerHTML)) {
+//   shouldSwitch = true;
+//   break;
