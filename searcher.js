@@ -9,6 +9,8 @@ function searcher() {
   let columnsQuantity = dataTableTB
     .getElementsByTagName("tr")[0]
     .getElementsByTagName("td").length;
+  // i = index of a row
+  // j = index of a column
   for (let i = 0; i < tr.length; i += 1) {
     for (let j = 0; j <= columnsQuantity; j += 1) {
       let td = tr[i].getElementsByTagName("td")[j];
@@ -16,6 +18,7 @@ function searcher() {
         let txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(searchingValue) > -1) {
           tr[i].classList.remove("hide");
+          break;
         }
       }
     }
