@@ -16,21 +16,27 @@ let sorterToggle = [true, true, true, true, true, true];
 
 headerId.addEventListener("click", function () {
   sortTable(0, sorterToggle[0]);
+  paginationBtnFunctionality(0);
 });
 headerCompany.addEventListener("click", function () {
   sortTable(1, sorterToggle[1], "string");
+  paginationBtnFunctionality(0);
 });
 headerCity.addEventListener("click", function () {
   sortTable(2, sorterToggle[2], "string");
+  paginationBtnFunctionality(0);
 });
 headerTI.addEventListener("click", function () {
   sortTable(3, sorterToggle[3]);
+  paginationBtnFunctionality(0);
 });
 headerAI.addEventListener("click", function () {
   sortTable(4, sorterToggle[4]);
+  paginationBtnFunctionality(0);
 });
 headerLMI.addEventListener("click", function () {
   sortTable(5, sorterToggle[5]);
+  paginationBtnFunctionality(0);
 });
 
 // This sorting mechanism "work" but is hard to say that it make its job done.

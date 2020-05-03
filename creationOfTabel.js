@@ -39,7 +39,6 @@ function incomesCall(id) {
       if (request.status === 200) {
         const companyIncomes = JSON.parse(request.responseText);
         callculateIncomes(companyIncomes.incomes);
-        hideModal();
       } else {
         errorInfo();
       }
@@ -49,6 +48,19 @@ function incomesCall(id) {
     console.error(request.statusText);
   };
   request.send(null);
+  hideModal();
+  hideTabelContent();
+}
+
+function hideTabelContent() {
+  // do not hide first 50 elements
+  let counter = 0;
+  for (let element of dataTableTB.rows) {
+    if (counter >= 50) {
+      element.classList.add("hide");
+    }
+    counter += 1;
+  }
 }
 
 // 12 = December

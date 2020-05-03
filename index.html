@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
   <meta charset='utf-8'>
   <meta name='author' content='Bartosz Dudek'>
@@ -8,32 +8,35 @@
 </head>
 <body>
 <!-- Modal -->
-  <div id="awaitModal" class='modal'>
-    <div class="modal-content">
+  <div id='awaitModal' class='modal'>
+    <div class='modal-content'>
       <p>Data fetching in progress</p>
-      <div class="loader"></div>
+      <div class='loader'></div>
     </div>
   </div>
-
-  <div>
-    <table id='dataTable'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Company</th> 
-                <th>City</th>
-                <th>Total income</th>
-                <th>Average income</th>
-                <th>Last month income</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <div id='pagiation'></div>
+<!-- Tabel with pagination -->
+  <div class='tableContainer'>
+    <div id='pagination'>
+    </div>
+      <table id='dataTable'>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Company</th> 
+                  <th>City</th>
+                  <th>Total income</th>
+                  <th>Average income</th>
+                  <th>Last month income</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
   </div>
+
   <script src='modal.js'></script>
   <script src='creationOfTabel.js'></script>
   <script src='sorting.js'></script>
+  <script src='pagination.js'></script>
 </body>
 </html>
