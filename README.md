@@ -26,7 +26,7 @@ Right now, there is no validation of the year so function would add income from 
 
 Searching:
 If quantity of results is larger than 50 (number of records displayed on 1 site), all result will be displayed on site. If someone try to switch site or sort result, result of searcher will be no displayed untill at least 1 character from a search input will be removed or added.
-Also, searching mechanism have a nested for loop. It has to be refactored in a future. O(n^2) time complexity is meh.
+Also, searching mechanism have a nested for loop. It has to be refactored in a future.
 
 Testng:
 Unit tests coverage = 0%.

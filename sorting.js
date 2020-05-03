@@ -86,7 +86,3 @@ function sortTable(n, asc = true, type = "number") {
     }
   }
 }
-
-// if (Number(x.innerHTML) < Number(y.innerHTML)) {
-//   shouldSwitch = true;
-//   break;
