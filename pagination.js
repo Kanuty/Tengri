@@ -19,7 +19,7 @@ function paginationBtnFunctionality(i) {
   for (elements of dataTableTB.rows) {
     elements.classList.add("hide");
   }
-  for (let test = showNumber[i]; test < showNumber[i + 1]; test += 1) {
-    dataTableTB.rows[test].classList.remove("hide");
+  for (let toShow = showNumber[i]; toShow < showNumber[i + 1]; toShow += 1) {
+    dataTableTB.rows[toShow].classList.remove("hide");
   }
 }

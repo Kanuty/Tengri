@@ -16,27 +16,29 @@
   </div>
 <!-- Tabel with pagination -->
   <div class='tableContainer'>
+    <input type="text" id="searchInput" placeholder="Search for data...">
     <div id='pagination'>
     </div>
-      <table id='dataTable'>
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Company</th> 
-                  <th>City</th>
-                  <th>Total income</th>
-                  <th>Average income</th>
-                  <th>Last month income</th>
-              </tr>
-          </thead>
-          <tbody>
-          </tbody>
-      </table>
+    <table id='dataTable'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Company</th> 
+          <th>City</th>
+          <th>Total income</th>
+          <th>Average income</th>
+          <th>Last month income</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
   
   <script src='modal.js'></script>
   <script src='creationOfTabel.js'></script>
   <script src='sorting.js'></script>
   <script src='pagination.js'></script>
+  <script src='searcher.js'></script>
 </body>
 </html>

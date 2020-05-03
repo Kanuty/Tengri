@@ -24,5 +24,12 @@ Last month income question:
 There is no information what "last month" mean. Is this a last month from today? Or is it last month of the year? Or maybe last mont with income data? Because of that, implementation of this column is a "Work in Progress". Right now, Last month income is equal to sum of incomes from december. User can't change it. Nevertheless a function that sum income have a parameter that controll a month of sum.
 Right now, there is no validation of the year so function would add income from all decembers.
 
+Searching:
+If quantity of results is larger than 50 (number of records displayed on 1 site), all result will be displayed on site. If someone try to switch site or sort result, result of searcher will be no displayed untill at least 1 character from a search input will be removed or added.
+Also, searching mechanism have a nested for loop. It has to be refactored in a future. O(n^2) time complexity is meh.
+
 Testng:
 Unit tests coverage = 0%.
+
+Income (general):
+I would advice to use integer as a representation of income, not floats. 108479 \*10^-2 insteed of 1084.79 Currently there is a possibility of error when performing calculations. Also I am not sure if performing potentialy processor heavy calculation, like counting average income, on a user side is the optimal solution.

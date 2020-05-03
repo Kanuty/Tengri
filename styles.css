@@ -1,5 +1,6 @@
 :root {
   --cold-white: #e1f0f5;
+  --bleak-white: #f4f4f4;
   --main-theme: #089ad4;
   --cold-shadow: #19142e;
 }
@@ -16,7 +17,6 @@ table {
 }
 table th {
   background-color: var(--main-theme);
-  box-shadow: 0 1px 3px 0 var(--cold-shadow);
   color: var(--cold-white);
   cursor: pointer;
   font-size: 18px;
@@ -26,7 +26,7 @@ table th {
 table,
 th,
 td {
-  border: 1px solid var(--cold-shadow);
+  border: 1px solid var(--bleak-white);
   padding: 5px;
   text-align: center;
 }
@@ -84,7 +84,7 @@ tr:nth-child(odd) {
 .modal-content {
   border-radius: 5px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.7);
-  background-color: #f4f4f4;
+  background-color: var(--bleak-white);
   margin: 20% auto;
   padding: 20px;
   width: 70%;
@@ -116,4 +116,18 @@ tr:nth-child(odd) {
   margin: 5px;
   padding: 1px;
   width: 25px;
+}
+
+#searchInput {
+  border: 2px solid var(--bleak-white);
+  border-radius: 3px;
+  color: var(--main-theme);
+  font-size: 18px;
+  margin-bottom: 12px;
+  padding: 12px 20px 12px 40px;
+  width: 96%;
+}
+
+#searchInput::placeholder {
+  color: var(--main-theme);
 }
