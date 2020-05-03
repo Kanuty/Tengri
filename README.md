@@ -20,5 +20,9 @@ Pagination is hard coded. There is always equal number of buttons, no matter how
 
 After sorting mechanism has been used, view is reseted to page 1. User have no clear indicator about that.
 
+Last month income question:
+There is no information what "last month" mean. Is this a last month from today? Or is it last month of the year? Or maybe last mont with income data? Because of that, implementation of this column is a "Work in Progress". Right now, Last month income is equal to sum of incomes from december. User can't change it. Nevertheless a function that sum income have a parameter that controll a month of sum.
+Right now, there is no validation of the year so function would add income from all decembers.
+
 Testng:
 Unit tests coverage = 0%.

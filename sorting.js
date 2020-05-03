@@ -11,7 +11,6 @@ const headerTI = dataTableHeader.getElementsByTagName("th")[3];
 const headerAI = dataTableHeader.getElementsByTagName("th")[4];
 // last mounth income
 const headerLMI = dataTableHeader.getElementsByTagName("th")[5];
-
 let sorterToggle = [true, true, true, true, true, true];
 
 headerId.addEventListener("click", function () {
