@@ -1,6 +1,12 @@
 "# Tengri"
 Author: Bartosz Dudek
 
+How to set up project locally:
+
+1. Clone or download repository to your local machine from https://github.com/Kanuty/Tengri;
+2. Unzip files if necessary;
+3. Open index.html file to start a site.
+
 External dependencies:
 -- none
 This project use vanilla JS and CSS only.
